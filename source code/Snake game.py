@@ -107,11 +107,6 @@ class Game:
     def __init__(self):
         pygame.init()
 
-        pygame.mixer.init()
-        pygame.mixer.music.set_volume(0.1)
-        #pygame.mixer.Sound.set_volume(0.1)
-        self.bg_music()
-
 
     def is_collision(self,x1, y1, x2, y2):
         if x1 >= x2 and x1 < x2 + SIZE:
@@ -183,6 +178,10 @@ class Game:
 
     def run(self):
         window.destroy()
+        pygame.mixer.init()
+        pygame.mixer.music.set_volume(0.1)
+        # pygame.mixer.Sound.set_volume(0.1)
+        self.bg_music()
 
         self.surface = pygame.display.set_mode((1000, 1000))
         self.snake = Snake(self.surface, 1)  # poso megalo thelw na einai
@@ -212,6 +211,7 @@ class Game:
 
                     if event.key == K_RETURN:
                         pause = False
+                        self.bg_music()
 
 
                 elif event.type == QUIT:
